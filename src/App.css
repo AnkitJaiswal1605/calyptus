@@ -1,3 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(#00245E, #0F7783);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 100vw;
+  height: 7rem;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 1.5rem;
+}
+
+.nav-menu {
+  width: 25rem;
+}
+
+.nav-link {
+  position: relative;
+  top: 40px;
+  margin: auto 1.5rem;
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+}
+
+.nav-link:hover {
+  color: #4dfed4;
+  border-bottom: solid;
+  border-color: #4dfed4;
+}
+
+.connection-div {
+  position: absolute;
+  display: flex;
+  top: 2rem;
+  right: 4rem;
+}
+
+.logout {
+  margin-right: 2rem;
+  position: relative;
+  top: 8px;
+  cursor: pointer;
+}
+
+.wallet-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallet-btn {
+  background-color: transparent;
+  border-color: white;
+  border-style: solid;
+  border-width: 3.5px;
+  width: 11rem;
+  height: 2.5rem;
+  color: white;
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.container {
+  font-family: 'Inria Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 67vh;
+  min-width: 24rem;
+  background-color: rgba(21, 21, 21, 0.46);
+  border-radius: 20px;
+  position: relative;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+.green-text {
+  color: #4dfed4;
+}
+
+.nft-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#file {
+  margin: 2rem 0 1rem;
+}
+
+#name, #description, #price {
+  width: 20rem;
+  height: 2rem;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  margin: 0.5rem auto;
+  padding-left: 1rem;
+  color: #4dfed4;
+  font-size: 0.8rem;
+}
+
+#description {
+  height: 6rem !important;
+  padding-top: 0 !important;
+}
+
+form input::placeholder {
+  color: white;
+}
+
+form input:focus {
+  outline: none;
+}
+
+.send-btn {
+  background-color: white;
+  border: none;
+  color: #20746F;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  width: 20rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.loading-msg {
+  position: absolute;
+  bottom: 2rem;
+  color: #4dfed4;
+  font-family: 'Inria Sans', sans-serif;
+  width: 100vw;
+  text-align: center;
+}
+
+.explore-nft-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nft-card {
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 20px;
+  border-color: #4dfed4;
+  padding: 1.5rem;
+  width: 15rem;
+  height: 23rem;
+  margin: auto 1rem;
+}
+
+.nft-img {
+  width: 12rem;
+  margin-bottom: 1.5rem;
+}
+
+.buy-btn {
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  width: 11rem;
+  height: 1.5rem;
+  padding-bottom: 1.3rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.buy-btn:hover {
+  color: #4dfed4;
+  border-color: #4dfed4;
+}
+
 .App {
   text-align: center;
 }
