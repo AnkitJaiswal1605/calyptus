@@ -104,7 +104,8 @@ function App() {
   const renewAllowance = async (e) => {
     if(account) {
       e.preventDefault();
-      const txResponse = await wallet.renewAllowance(e.target.user.value, ethers.utils.parseEther(e.target.allowance.value));
+      const timeLimit = 30*24*60*60;
+      const txResponse = await wallet.renewAllowance(e.target.user.value, ethers.utils.parseEther(e.target.allowance.value), timeLimit);
       setLoadingMsg('Processing...');
       await txResponse.wait();
       e.target.user.value = null;
@@ -120,7 +121,8 @@ function App() {
  
   const pendingApproval = async () => {
     if(account) {
-      let val = await wallet.allowance(account);
+      let user = await wallet.users(account);
+      let val = await user.allowance;
       setpendingApprovalValue(val);
     } 
   }
@@ -165,7 +167,7 @@ function App() {
             <form onSubmit={renewAllowance} autoComplete="off">
               <input id='user' className='input' type='text' placeholder="Enter User Address..." />
               <br />
-              <input id='allowance' className='input' type='number' placeholder="Enter Allowance..." />
+              <input id='allowance' className='input' type='number' min="1" step="1" placeholder="Enter Allowance..." />
               <br />
               <button className="send-btn" type="submit">SET</button>
             </form>
@@ -187,7 +189,7 @@ function App() {
             <form onSubmit={spendCoins} autoComplete="off">
               <input id='receiver' className='input' type='text' placeholder="Enter Receiver Address..." />
               <br />
-              <input id='amount' className='input' type='number' placeholder="Enter Amount..." />
+              <input id='amount' className='input' type='number' min="1" step="1" placeholder="Enter Amount..." />
               <br />
               <button className="send-btn" type="submit">SEND</button>
             </form>
