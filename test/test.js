@@ -71,7 +71,8 @@ describe("Coin and Wallet contracts", function () {
     it("Should set the right allowance for the user", async function () {
       // Transfer 50 tokens from owner to addr1
       await wallet.renewAllowance(addr1.address, 5000, 200);
-      const addr1Allowance = await wallet.allowance(addr1.address);
+      const addr1User = await wallet.users(addr1.address);
+      const addr1Allowance = await addr1User.allowance;
       expect(addr1Allowance).to.equal(5000);
     });
 
@@ -79,16 +80,18 @@ describe("Coin and Wallet contracts", function () {
       const initialWalletBalance = await coin.balanceOf(wallet.address);
 
       await wallet.renewAllowance(addr1.address, 5000, 200);
-      const initialAddr1Allowance = await wallet.allowance(addr1.address);
+      let addr1User = await wallet.users(addr1.address);
+      const initialAddr1Allowance = await addr1User.allowance;
 
       await wallet.connect(addr1).spendCoins(addr2.address, 1000);
 
       const finalWalletBalance = await coin.balanceOf(wallet.address);
-      const addr1Allowance = await wallet.allowance(addr1.address);
+      addr1User = await wallet.users(addr1.address);
+      const finalAddr1Allowance = await addr1User.allowance;
       const addr2Balance = await coin.balanceOf(addr2.address);
 
       expect(finalWalletBalance).to.equal(initialWalletBalance.sub(1000));
-      expect(addr1Allowance).to.equal(initialAddr1Allowance.sub(1000));
+      expect(finalAddr1Allowance).to.equal(initialAddr1Allowance.sub(1000));
       expect(addr2Balance).to.equal(1000);
     });
   });

@@ -17,8 +17,14 @@ contract Wallet is Ownable {
     event AllowanceRenewed(address indexed user, uint allowance, uint timeLimit);
     event CoinsSpent(address indexed receiver, uint amount);
 
+    modifier checkAllowance(uint _amount) {
+        User memory user = users[msg.sender];
+        require(_amount <= user.allowance, "Allowance not sufficient!!");
+        _;
+    }
+
     constructor(Coin _coin) {
-      coin = _coin;
+        coin = _coin;
     }
 
     function renewAllowance(address _user, uint _allowance, uint _timeLimit) public onlyOwner {
@@ -27,9 +33,8 @@ contract Wallet is Ownable {
         emit AllowanceRenewed(_user, _allowance, _timeLimit);
     }
 
-    function spendCoins(address _receiver, uint _amount) public {
+    function spendCoins(address _receiver, uint _amount) public checkAllowance(_amount) {
         User storage user = users[msg.sender];
-        require(_amount <= user.allowance, "Allowance not sufficient!!");
         require(block.timestamp <= user.validity, "Validity expired!!");
         coin.transfer(_receiver, _amount);
         user.allowance -= _amount;
