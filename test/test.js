@@ -70,7 +70,7 @@ describe("Coin and Wallet contracts", function () {
   describe("Transactions", function () {
     it("Should set the right allowance for the user", async function () {
       // Transfer 50 tokens from owner to addr1
-      await wallet.renewAllowance(addr1.address, 5000);
+      await wallet.renewAllowance(addr1.address, 5000, 200);
       const addr1Allowance = await wallet.allowance(addr1.address);
       expect(addr1Allowance).to.equal(5000);
     });
@@ -78,7 +78,7 @@ describe("Coin and Wallet contracts", function () {
     it("User should be able to spend coins once approved, and balances should be updates", async function () {
       const initialWalletBalance = await coin.balanceOf(wallet.address);
 
-      await wallet.renewAllowance(addr1.address, 5000);
+      await wallet.renewAllowance(addr1.address, 5000, 200);
       const initialAddr1Allowance = await wallet.allowance(addr1.address);
 
       await wallet.connect(addr1).spendCoins(addr2.address, 1000);
