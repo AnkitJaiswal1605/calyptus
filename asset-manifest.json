@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/calyptus/static/css/main.da92508a.css",
+    "main.js": "/calyptus/static/js/main.0c5550d5.js",
+    "static/js/787.2ea3fdb0.chunk.js": "/calyptus/static/js/787.2ea3fdb0.chunk.js",
+    "index.html": "/calyptus/index.html",
+    "main.da92508a.css.map": "/calyptus/static/css/main.da92508a.css.map",
+    "main.0c5550d5.js.map": "/calyptus/static/js/main.0c5550d5.js.map",
+    "787.2ea3fdb0.chunk.js.map": "/calyptus/static/js/787.2ea3fdb0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da92508a.css",
+    "static/js/main.0c5550d5.js"
+  ]
+}
