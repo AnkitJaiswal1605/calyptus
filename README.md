@@ -13,18 +13,28 @@ etherscan link - https://rinkeby.etherscan.io/address/0x53ca7dfbA3a1a7ED8bA8F808
 etherscan link - https://rinkeby.etherscan.io/address/0xebf8656Ccc7b0CA7AF57A02ACFeD6713549AbE19
 
 Language - Solidity
+
 Network - Rinkeby
+
 Development framework - Hardhat
+
 ethers.js for integration with frontend and script
+
 mocha and chai for testing contracts
+
 alchemy and infura as node providers
+
 etherscan api for verifying smart contracts
 
 Frontend -
+
 Development framework - React
+
 Website link - 
+
 Wallet - Metamask
 
 Backend scripts - 
+
 Written in ethers.js to interact with smart contract for renewing allowance and spending coins
 
