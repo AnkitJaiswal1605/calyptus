@@ -15,6 +15,7 @@ describe("Coin and Wallet contracts", function () {
 
   // `beforeEach` will run before each test, re-deploying the contract every time.
   beforeEach(async function () {
+    
     // Get the ContractFactory and Signers here.
     Coin = await ethers.getContractFactory("Coin");
     Wallet = await ethers.getContractFactory("Wallet");
