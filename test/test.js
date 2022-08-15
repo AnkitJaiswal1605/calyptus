@@ -25,7 +25,6 @@ describe("Coin and Wallet contracts", function () {
   let owner;
   let addr1;
   let addr2;
-  let addr3;
   let totalSupply
 
   // `beforeEach` will run before each test, re-deploying the contract every
@@ -34,7 +33,7 @@ describe("Coin and Wallet contracts", function () {
     // Get the ContractFactory and Signers here.
     Coin = await ethers.getContractFactory("Coin");
     Wallet = await ethers.getContractFactory("Wallet");
-    [owner, addr1, addr2, addr3] = await ethers.getSigners();
+    [owner, addr1, addr2] = await ethers.getSigners();
 
     // To deploy our contract, we just have to call Coin.deploy() and await
     // for it to be deployed(), which happens once its transaction has been

@@ -6,19 +6,33 @@ import './Coin.sol';
 
 contract Wallet is Ownable {
     Coin public coin;
-    mapping(address => uint) public allowance;
+    mapping(address => User) public users;
+
+    struct User {
+        address userAddress;
+        uint allowance;
+        uint validity;
+    }
+
+    event AllowanceRenewed(address indexed user, uint allowance, uint timeLimit);
+    event CoinsSpent(address indexed receiver, uint amount);
 
     constructor(Coin _coin) {
       coin = _coin;
     }
 
-    function renewAllowance(address _user, uint _allowance) public onlyOwner {
-        allowance[_user] = _allowance;
+    function renewAllowance(address _user, uint _allowance, uint _timeLimit) public onlyOwner {
+        uint validity = block.timestamp + _timeLimit;
+        users[_user] = User(_user, _allowance, validity);
+        emit AllowanceRenewed(_user, _allowance, _timeLimit);
     }
 
     function spendCoins(address _receiver, uint _amount) public {
-        require(_amount <= allowance[msg.sender], "Allowance not sufficient");
+        User storage user = users[msg.sender];
+        require(_amount <= user.allowance, "Allowance not sufficient!!");
+        require(block.timestamp <= user.validity, "Validity expired!!");
         coin.transfer(_receiver, _amount);
-        allowance[msg.sender] -= _amount;
+        user.allowance -= _amount;
+        emit CoinsSpent(_receiver, _amount);
     }
 }

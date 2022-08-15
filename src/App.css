@@ -110,6 +110,10 @@ h1 {
   color: #4dfed4;
 }
 
+.pending-approval {
+  margin: 2rem auto 1rem;
+}
+
 .nft-form {
   display: flex;
   flex-direction: column;
@@ -145,6 +149,45 @@ form input:focus {
   outline: none;
 }
 
+.get-btn {
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  width: 5rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+  position: relative;
+  bottom: 2px;
+  padding-bottom: 1.3rem;
+  cursor: pointer;
+}
+
+.input {
+  width: 20rem;
+  height: 3rem;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 3.5px;
+  border-color: white;
+  margin: 1rem auto 0;
+  padding-left: 1rem;
+  color: #4dfed4;
+  font-size: 1rem;
+}
+
+.input::placeholder {
+  color: white;
+}
+
+.input:focus {
+  outline: none;
+}
+
 .send-btn {
   background-color: white;
   border: none;
@@ -153,6 +196,7 @@ form input:focus {
   font-size: 1.2rem;
   width: 20rem;
   height: 2.5rem;
+  margin-top: 1.5rem;
   cursor: pointer;
 }
 
@@ -161,7 +205,7 @@ form input:focus {
   bottom: 2rem;
   color: #4dfed4;
   font-family: 'Inria Sans', sans-serif;
-  width: 100vw;
+  width: 100%;
   text-align: center;
 }
 
