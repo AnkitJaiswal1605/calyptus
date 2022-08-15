@@ -4,7 +4,7 @@ This project demonstrates a shared wallet contract that can be used by an admin 
 
 # Components :
 
-# Smart contracts - 
+# Smart contracts 
 
 1) Coin.sol - To create an ERC-20 token that can be spent by the users
 
@@ -28,7 +28,7 @@ alchemy and infura as node providers
 
 etherscan api for verifying smart contracts
 
-# Frontend -
+# Frontend 
 
 Development framework - React
 
@@ -36,7 +36,7 @@ Website link -
 
 Wallet - Metamask
 
-# Backend scripts - 
+# Backend scripts 
 
 Written in ethers.js to interact with smart contract for renewing allowance and spending coins
 
