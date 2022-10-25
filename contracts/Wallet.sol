@@ -29,6 +29,8 @@ contract Wallet is Ownable, ReentrancyGuard {
     event CoinsSpent(address indexed receiver, uint amount);
 
     // This modifier will check if the user has sufficient allowance before spending the coins.
+    // Although we can have a 'require' statement instead of a modifier in this particular case, 
+    // but let's use it to practise how it works.
     modifier checkAllowance(uint _amount) {
         User memory user = users[msg.sender];
         require(_amount <= user.allowance, "Allowance not sufficient!!");
