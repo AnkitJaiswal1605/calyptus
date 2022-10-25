@@ -53,6 +53,7 @@ contract Wallet is Ownable, ReentrancyGuard {
 
     // The user can spend coins till the allowance is met, and before the validity is over.
     // checkAllowance modifier will check the allowance limit.
+    // nonReentrant modifier will protect it from reentrancy attack.
     function spendCoins(address _receiver, uint _amount) public nonReentrant checkAllowance(_amount) {
         User storage user = users[msg.sender];
         // Current time should be before the validity is over.
