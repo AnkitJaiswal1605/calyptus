@@ -28,7 +28,7 @@ contract Wallet is Ownable, ReentrancyGuard {
     event AllowanceRenewed(address indexed user, uint allowance, uint timeLimit);
     event CoinsSpent(address indexed receiver, uint amount);
 
-    // This modifier will check if the user has sufficient aloowance before spending the coins.
+    // This modifier will check if the user has sufficient allowance before spending the coins.
     modifier checkAllowance(uint _amount) {
         User memory user = users[msg.sender];
         require(_amount <= user.allowance, "Allowance not sufficient!!");
@@ -51,11 +51,12 @@ contract Wallet is Ownable, ReentrancyGuard {
 
     // The user can spend coins till the allowance is met, and before the validity is over.
     // checkAllowance modifier will check the allowance limit.
-    function spendCoins(address _receiver, uint _amount) public checkAllowance(_amount) {
+    function spendCoins(address _receiver, uint _amount) public nonReentrant checkAllowance(_amount) {
         User storage user = users[msg.sender];
         // Current time should be before the validity is over.
         require(block.timestamp <= user.validity, "Validity expired!!");
         // Allowance is reduced before the coins are spent as a check against reentrancy attack.
+        // Although we already have the nonReentrant modifier, but it's a good practice.
         user.allowance -= _amount;
         coin.transfer(_receiver, _amount);
         emit CoinsSpent(_receiver, _amount);
